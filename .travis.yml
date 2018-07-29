@@ -3,4 +3,4 @@ addons:
   sonarcloud:
     organization: "balagurumoorthy-github" 
 script:
-  - sonar-scanner
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
