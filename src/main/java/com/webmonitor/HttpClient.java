@@ -5,6 +5,7 @@ import java.io.IOException;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.apache.ApacheHttpTransport;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.webmonitor.validator.ResponseBodyValidator;
 import com.webmonitor.vo.ResultVo;
@@ -19,7 +20,7 @@ public class HttpClient {
 	private  HttpTransport HTTP_TRANSPORT ;
 
 	public HttpClient() {
-		this.setHTTP_TRANSPORT(new NetHttpTransport());
+		this.setHTTP_TRANSPORT(new ApacheHttpTransport());
 	}
 	
 	 

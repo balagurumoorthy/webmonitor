@@ -13,11 +13,10 @@ public class Monitor {
 	
 	
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-	  /**  Connect to a URL,
-	   *    check the status is 200 or others
-	   *    check the if 200 check the response content**/
 		
+		Monitor monitor = new Monitor() ;
+		List<ResultVo> resultList = monitor.checkUrlList(args) ;
+		monitor.output(resultList);
 		
 	}
 	

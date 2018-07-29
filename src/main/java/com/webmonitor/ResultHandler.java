@@ -1,7 +1,6 @@
 package com.webmonitor;
 
 import java.io.IOException;
-import java.util.Date;
 
 import com.google.api.client.http.HttpExecuteInterceptor;
 import com.google.api.client.http.HttpIOExceptionHandler;
@@ -30,7 +29,7 @@ public class ResultHandler implements HttpExecuteInterceptor,
 	@Override
 	public void intercept(HttpRequest request) throws IOException {
 		// TODO Auto-generated method stub
-		this.result.setEpoch( System.currentTimeMillis()) ;
+		this.result.setEpoch( this.getTimeInMs()) ;
 	}
 
 	@Override
@@ -51,18 +50,18 @@ public class ResultHandler implements HttpExecuteInterceptor,
 	@Override
 	public boolean handleResponse(HttpRequest request, HttpResponse errResponse, boolean retrySupported) throws IOException {
 		this.setResponseTime();
-		return retrySupported;
+		return true;
 	}
 
 	@Override
 	public boolean handleIOException(HttpRequest request, boolean retrySupported) throws IOException {
 		this.setResponseTime();
 		this.result.setStatusCheck("NET") ;
-		return retrySupported;
+		return true;
 	}
 	
 	protected void setResponseTime() {
-		this.result.setResponseTimeInms(System.currentTimeMillis() - this.result.getEpoch());
+		this.result.setResponseTimeInms(this.getTimeInMs() - this.result.getEpoch());
 	}
 
 	public ResultHandler(IResponseValidator responseBodyValidator) {
@@ -70,5 +69,8 @@ public class ResultHandler implements HttpExecuteInterceptor,
 		this.responseBodyValidator = responseBodyValidator;
 	}
 	
+	public long getTimeInMs() {
+		return System.currentTimeMillis() ;
+	}
 
 }

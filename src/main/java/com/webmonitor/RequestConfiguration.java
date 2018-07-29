@@ -20,12 +20,14 @@ public class RequestConfiguration implements HttpRequestInitializer {
 	
 	@Override
 	public void initialize(HttpRequest request) throws IOException {
-		request.setConnectTimeout(this.connectionTimeOut) ;
-		request.setReadTimeout(this.readTimeOut) ;
-		request.setNumberOfRetries(this.numberOfRetries) ;
-		request.setInterceptor(this.handler) ;
-		request.setResponseInterceptor(this.handler) ;
-		request.setUnsuccessfulResponseHandler(this.handler) ;
+		request.setConnectTimeout(this.connectionTimeOut) 
+						.setReadTimeout(this.readTimeOut) 
+						.setNumberOfRetries(this.numberOfRetries) 
+						.setInterceptor(this.handler) 
+						.setFollowRedirects(true)
+						.setResponseInterceptor(this.handler) 
+						.setUnsuccessfulResponseHandler(this.handler) 
+						.setIOExceptionHandler(this.handler);
 	}
 
 }
