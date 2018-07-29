@@ -6,7 +6,6 @@ import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.apache.ApacheHttpTransport;
-import com.google.api.client.http.javanet.NetHttpTransport;
 import com.webmonitor.validator.ResponseBodyValidator;
 import com.webmonitor.vo.ResultVo;
 
@@ -17,16 +16,16 @@ import lombok.Setter;
 @Setter
 public class HttpClient {
 
-	private  HttpTransport HTTP_TRANSPORT ;
+	private  HttpTransport httpTransport ;
 
 	public HttpClient() {
-		this.setHTTP_TRANSPORT(new ApacheHttpTransport());
+		this.setHttpTransport(new ApacheHttpTransport());
 	}
 	
 	 
 	
 	public HttpClient(HttpTransport httpTransport) {
-		this.setHTTP_TRANSPORT(httpTransport) ;
+		this.setHttpTransport(httpTransport) ;
 	}
 
 	public ResultVo checkUrl(String url) {
@@ -38,7 +37,7 @@ public class HttpClient {
 
 		resultHandler.setResult(result);
 		
-		HttpRequestFactory requestFactory = HTTP_TRANSPORT.createRequestFactory(initializer);
+		HttpRequestFactory requestFactory = httpTransport.createRequestFactory(initializer);
 		try {
 			requestFactory.buildGetRequest(new GenericUrl(url)).execute();
 		} catch (IOException ioException) {

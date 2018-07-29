@@ -21,7 +21,7 @@ public class Monitor {
 	}
 	
 	
-	public List<ResultVo> checkUrlList (String args[]) {
+	public List<ResultVo> checkUrlList (String[] args) {
 		HttpClient client = new HttpClient() ;
 		List<ResultVo> resultList = new ArrayList<ResultVo>() ;
 		

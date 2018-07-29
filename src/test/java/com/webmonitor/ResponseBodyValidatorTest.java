@@ -34,7 +34,6 @@ public class ResponseBodyValidatorTest {
 
 					@Override
 					public LowLevelHttpResponse execute() throws IOException {
-						// TODO Auto-generated method stub
 						MockLowLevelHttpResponse response =  new MockLowLevelHttpResponse() ;
 						response.setStatusCode(200) ;
 						response.setContent("Completed: GREEN : Changes for testing") ;
@@ -52,7 +51,7 @@ public class ResponseBodyValidatorTest {
 		 assertNotNull(resultVo);
 		 assertSame(url, resultVo.getCheckUrl()) ;
 		 assertNotNull(resultVo.getStatusCheck()) ;
-		 assertSame(resultVo.getStatusCheck() , "GREEN") ;
+		 assertSame("GREEN",resultVo.getStatusCheck()  ) ;
 		 
 	}
 	
@@ -67,7 +66,6 @@ public class ResponseBodyValidatorTest {
 
 					@Override
 					public LowLevelHttpResponse execute() throws IOException {
-						// TODO Auto-generated method stub
 						MockLowLevelHttpResponse response =  new MockLowLevelHttpResponse() ;
 						response.setStatusCode(200) ;
 						response.setContent((String)null) ;
@@ -85,7 +83,7 @@ public class ResponseBodyValidatorTest {
 		 assertNotNull(resultVo);
 		 assertSame(url, resultVo.getCheckUrl()) ;
 		 assertNotNull(resultVo.getStatusCheck()) ;
-		 assertSame(resultVo.getStatusCheck() , "RED") ;
+		 assertSame( "RED",resultVo.getStatusCheck()) ;
 		 
 	}
 	
@@ -103,7 +101,7 @@ public class ResponseBodyValidatorTest {
 
 			resultHandler.setResult(result);
 			
-			HttpRequestFactory requestFactory = client.getHTTP_TRANSPORT().createRequestFactory(initializer);
+			HttpRequestFactory requestFactory = client.getHttpTransport().createRequestFactory(initializer);
 			HttpRequest httpRequest = null ;
 			IOException expValidator = null ;
 			

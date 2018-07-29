@@ -28,13 +28,11 @@ public class ResultHandler implements HttpExecuteInterceptor,
 	
 	@Override
 	public void intercept(HttpRequest request) throws IOException {
-		// TODO Auto-generated method stub
 		this.result.setEpoch( this.getTimeInMs()) ;
 	}
 
 	@Override
 	public void interceptResponse(HttpResponse response) throws IOException {
-		// TODO Auto-generated method stub
 		this.setResponseTime();
 		if (response == null) {
 			return ;
